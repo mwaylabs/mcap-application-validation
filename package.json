@@ -1,0 +1,19 @@
+{
+  "name": "mcap-application-validation",
+  "version": "0.0.0",
+  "description": "Validate a mCAP Application",
+  "main": "index.js",
+  "scripts": {
+    "test": "tap test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mwaylabs/mcap-application-validation.git"
+  },
+  "author": "mwaylabs",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mwaylabs/mcap-application-validation/issues"
+  },
+  "homepage": "https://github.com/mwaylabs/mcap-application-validation"
+}
