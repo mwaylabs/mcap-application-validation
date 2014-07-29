@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/mwaylabs/mcap-application-validation/issues"
   },
-  "homepage": "https://github.com/mwaylabs/mcap-application-validation"
+  "homepage": "https://github.com/mwaylabs/mcap-application-validation",
+  "devDependencies": {
+    "tap": "^0.4.12"
+  },
+  "dependencies": {
+    "jsonlint": "^1.6.0"
+  }
 }
