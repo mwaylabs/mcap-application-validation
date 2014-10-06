@@ -1,25 +1,38 @@
 {
   "name": "mcap-application-validation",
+  "description": "Validate a mCAP application",
   "version": "0.0.0",
-  "description": "Validate a mCAP Application",
-  "main": "index.js",
-  "scripts": {
-    "test": "tap test/*.js"
+  "homepage": "https://github.com/mwaylabs/mcap-application-validation",
+  "bugs": "https://github.com/mwaylabs/mcap-application-validation/issues",
+  "license": "MIT",
+  "main": "lib/mcap-application-validation.js",
+  "author": {
+    "name": "mwaylabs"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/mwaylabs/mcap-application-validation.git"
+    "url": "https://github.com/mwaylabs/mcap-application-validation"
   },
-  "author": "mwaylabs",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/mwaylabs/mcap-application-validation/issues"
-  },
-  "homepage": "https://github.com/mwaylabs/mcap-application-validation",
-  "devDependencies": {
-    "tap": "^0.4.12"
-  },
+  "keywords": [],
   "dependencies": {
-    "jsonlint": "^1.6.0"
+    "jsonlint": "^1.6.2"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.8",
+    "gulp-util": "^3.0.1",
+    "gulp-bump": "^0.1.11",
+    "gulp-jscs": "^1.1.2",
+    "gulp-jshint": "^1.8.4",
+    "gulp-mocha": "^1.1.0",
+    "gulp-istanbul": "^0.3.0",
+    "coveralls": "^2.11.1",
+    "should": "^4.0.4",
+    "jshint-stylish": "^0.4.0",
+    "gulp-load-plugins": "^0.6.0",
+    "gulp-plumber": "^0.6.5"
+  },
+  "scripts": {
+    "coveralls": "gulp test && cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "test": "gulp test"
   }
 }
