@@ -15,11 +15,14 @@
   },
   "keywords": [],
   "dependencies": {
-    "async": "^0.9.0",
-    "jsonlint": "^1.6.2"
+    "gulp": "^3.8.8",
+    "gulp-filter": "^1.0.2",
+    "gulp-jsonlint": "^0.1.0",
+    "joi": "^4.7.0",
+    "lodash": "^2.4.1",
+    "map-stream": "^0.1.0"
   },
   "devDependencies": {
-    "gulp": "^3.8.8",
     "gulp-util": "^3.0.1",
     "gulp-bump": "^0.1.11",
     "gulp-jscs": "^1.1.2",
