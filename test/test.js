@@ -2,108 +2,66 @@
 
 /*jshint expr: true*/
 
-var mCAPValidatior = require('../');
-var mCAPApplicationValidatior = null;
+var ApplicationValidation = require('../');
 require('should');
+var path = require('path');
 
 describe('mcapApplicationValidation', function () {
+  var validation;
 
   beforeEach(function() {
-    mCAPApplicationValidatior = new mCAPValidatior();
+    process.chdir(path.resolve(__dirname, 'fixtures/'));
+    validation = new ApplicationValidation();
   });
 
-  it('validate', function (cb) {
-    mCAPApplicationValidatior.validate(__dirname + '/passes/app1', function(err, valid) {
+  it('unkown folder', function (cb) {
+    validation.run('./unkown-folder', function(err) {
+      err.should.be.defined;
+      cb();
+    });
+  });
+
+  it('not mcap project', function (cb) {
+    validation.run('./no_project', function(err) {
+      err.should.be.defined;
+      err.message.should.be.eql('Missing mcap.json file');
+      cb();
+    });
+  });
+
+  it('lint errors', function (cb) {
+    validation.run('./lint_error/', function(err) {
+      err.should.be.defined;
+      err.name.should.be.eql('LintError');
+      err.details.should.be.defined;
+      err.details.should.be.instanceOf(Array);
+      err.details.should.be.length(2);
+      err.details[0].should.be.type('object');
+      err.details[0].file.should.be.type('string');
+      err.details[0].message.should.be.type('string');
+      cb();
+    });
+  });
+
+  it('validation errors', function (cb) {
+    validation.run('./validation_error/', function(err) {
+      err.should.be.defined;
+      err.name.should.be.eql('ValidateError');
+      err.details.should.be.defined;
+      err.details.should.be.instanceOf(Array);
+      err.details.should.be.length(2);
+      err.details[0].should.be.type('object');
+      err.details[0].file.should.be.type('string');
+      err.details[0].message.should.be.type('string');
+      cb();
+    });
+  });
+
+  it('pass', function (cb) {
+    validation.run('./passes/', function(err) {
       (err === null).should.be.true;
-      valid.should.be.true;
       cb();
     });
   });
 
-  it('validate fail: path does not exists', function (cb) {
-    mCAPApplicationValidatior.validate(__dirname + '/fails/00_not_app', function(err) {
-      err.should.be.defined;
-      err.should.be.an.instanceOf(Error);
-      err.errno.should.equal(34);
-      cb();
-    });
-  });
-
-  it('validate fail: not an application', function (cb) {
-    mCAPApplicationValidatior.validate(__dirname + '/fails/01_not_app', function(err) {
-      err.should.be.defined;
-      err.should.be.an.instanceOf(Error);
-      err.errors.should.be.defined;
-      err.errors.should.be.an.instanceOf(Array);
-      err.errors.should.be.a.lengthOf(1);
-      err.errors[0].code.should.equal('REQUIRED_FILE');
-      err.errors[0].file.should.equal('mcap.json');
-      cb();
-    });
-  });
-
-  it('validate fail: mcap.json parse error', function (cb) {
-    mCAPApplicationValidatior.validate(__dirname + '/fails/02_mcapjson_parse_error', function(err) {
-      err.should.be.defined;
-      err.should.be.an.instanceOf(Error);
-      err.errors.should.be.defined;
-      err.errors.should.be.an.instanceOf(Array);
-      err.errors.should.be.a.lengthOf(1);
-
-      err.errors[0].code.should.equal('CORUPED_FILE');
-      err.errors[0].file.should.equal('mcap.json');
-      cb();
-    });
-  });
-
-  it('validate fail: mcap.json uuid required', function (cb) {
-    mCAPApplicationValidatior.validate(__dirname + '/fails/03_uuid_required', function(err) {
-      err.should.be.defined;
-      err.should.be.an.instanceOf(Error);
-      err.errors.should.be.defined;
-      err.errors.should.be.an.instanceOf(Array);
-      err.errors.should.be.a.lengthOf(1);
-
-      err.errors[0].code.should.equal('REQUIRED_VALUE');
-      err.errors[0].file.should.equal('mcap.json');
-      err.errors[0].property.should.equal('uuid');
-
-      cb();
-    });
-  });
-
-  it('validate fail: mcap.json name required', function (cb) {
-    mCAPApplicationValidatior.validate(__dirname + '/fails/04_name_required', function(err) {
-      err.should.be.defined;
-      err.should.be.an.instanceOf(Error);
-      err.errors.should.be.defined;
-      err.errors.should.be.an.instanceOf(Array);
-      err.errors.should.be.a.lengthOf(1);
-
-      err.errors[0].code.should.equal('REQUIRED_VALUE');
-      err.errors[0].file.should.equal('mcap.json');
-      err.errors[0].property.should.equal('name');
-
-      cb();
-    });
-  });
-
-  it('validate fail: mcap.json uuid and name required', function (cb) {
-    mCAPApplicationValidatior.validate(__dirname + '/fails/05_uuid_name_required', function(err) {
-      err.should.be.defined;
-      err.should.be.an.instanceOf(Error);
-      err.errors.should.be.defined;
-      err.errors.should.be.an.instanceOf(Array);
-      err.errors.should.be.a.lengthOf(2);
-
-      err.errors[0].code.should.equal('REQUIRED_VALUE');
-      err.errors[0].file.should.equal('mcap.json');
-      err.errors[0].property.should.equal('uuid');
-
-      err.errors[1].code.should.equal('REQUIRED_VALUE');
-      err.errors[1].file.should.equal('mcap.json');
-      err.errors[1].property.should.equal('name');
-      cb();
-    });
-  });
 });
