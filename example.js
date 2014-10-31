@@ -1,11 +1,13 @@
 
-var validate = require('./');
+var ApplicationValidation = require('./');
 
-validate('./test/fixtures/02_mcapjson_parse_error/', function(err) {
+var validation = new ApplicationValidation();
+
+validation.run('./test/fixtures/passes', function(err) {
   if (err) {
-          console.log(err.details.forEach);
-      console.log(typeof err.details);
+    console.log(err.details.forEach);
+    console.log(typeof err.details);
     return console.log(err.details);
   }
-  console.log(arguments);
+  console.log('Project is valid!');
 });
