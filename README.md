@@ -14,14 +14,17 @@ $ npm install --save mcap-application-validation
 ## Usage
 
 ```javascript
-var mcapApplicationValidation = require('mcap-application-validation');
-mcapApplicationValidation('/path/to/my-mcap-app/');
+
+var ApplicationValidation = require('mcap-application-validation');
+
+var validation = new ApplicationValidation();
+validation.run('./test/fixtures/passes', function(err) {
+  if (err) {
+    return console.log(err.details);
+  }
+  console.log('Project is valid!');
+});
 ```
-
-## Contributing
-
-In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [gulp](http://gulpjs.com/).
-
 
 ## License
 
