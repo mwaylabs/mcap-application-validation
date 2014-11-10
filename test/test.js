@@ -57,11 +57,17 @@ describe('mcapApplicationValidation', function () {
     });
   });
 
-  it('pass', function (cb) {
+  it.skip('pass', function (cb) {
     validation.run('./passes/', function(err) {
       (err === null).should.be.true;
       cb();
     });
   });
 
+  it('ignore', function (cb) {
+    validation.run('./ignore/', function(err) {
+      (err === null).should.be.true;
+      cb();
+    });
+  });
 });

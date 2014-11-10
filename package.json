@@ -1,7 +1,7 @@
 {
   "name": "mcap-application-validation",
   "description": "Validate a mCAP application",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://github.com/mwaylabs/mcap-application-validation",
   "bugs": "https://github.com/mwaylabs/mcap-application-validation/issues",
   "license": "MIT",
@@ -15,10 +15,11 @@
   },
   "keywords": [],
   "dependencies": {
-    "gulp-util": "^3.0.1",
     "gulp": "^3.8.8",
+    "gulp-debug": "^1.0.1",
     "gulp-filter": "^1.0.2",
     "gulp-jsonlint": "^0.1.0",
+    "gulp-util": "^3.0.1",
     "joi": "^4.7.0",
     "lodash": "^2.4.1",
     "map-stream": "^0.1.0"
