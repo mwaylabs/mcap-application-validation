@@ -1,7 +1,7 @@
 {
   "name": "mcap-application-validation",
   "description": "Validate a mCAP application",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "homepage": "https://github.com/mwaylabs/mcap-application-validation",
   "bugs": "https://github.com/mwaylabs/mcap-application-validation/issues",
   "license": "MIT",
