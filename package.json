@@ -18,9 +18,9 @@
     "gulp": "^3.8.8",
     "gulp-debug": "^1.0.1",
     "gulp-filter": "^1.0.2",
-    "gulp-jsonlint": "^0.1.0",
+    "gulp-jsonlint": "^1.0.1",
     "gulp-util": "^3.0.1",
-    "joi": "^4.7.0",
+    "joi": "^5.0.2",
     "lodash": "^2.4.1",
     "map-stream": "^0.1.0"
   },
