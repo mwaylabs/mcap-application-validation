@@ -25,12 +25,14 @@
     "map-stream": "^0.1.0"
   },
   "devDependencies": {
+    "coveralls": "^2.11.1",
     "gulp-jscs": "^1.1.2",
     "gulp-jshint": "^1.8.4",
-    "coveralls": "^2.11.1",
-    "should": "^4.0.4",
+    "gulp-load-plugins": "^0.6.0",
+    "istanbul": "^0.3.4",
     "jshint-stylish": "^0.4.0",
-    "gulp-load-plugins": "^0.6.0"
+    "mocha": "^2.0.1",
+    "should": "^4.0.4"
   },
   "scripts": {
     "coveralls": "gulp lint && istanbul cover _mocha -- -R spec && cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
