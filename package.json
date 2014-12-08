@@ -22,7 +22,8 @@
     "gulp-util": "^3.0.1",
     "joi": "^5.0.2",
     "lodash": "^2.4.1",
-    "map-stream": "^0.1.0"
+    "map-stream": "^0.1.0",
+    "mcap-log": "^0.1.1"
   },
   "devDependencies": {
     "coveralls": "^2.11.1",
