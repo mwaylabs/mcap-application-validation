@@ -1,4 +1,8 @@
 
+# 0.1.6 (2015-04-09)
+
+- Workaround for gulp/vinyl-fs bug https://github.com/gulpjs/gulp/issues/552
+
 # 0.1.2 (2014-11-21)
 
 - Fix option context
